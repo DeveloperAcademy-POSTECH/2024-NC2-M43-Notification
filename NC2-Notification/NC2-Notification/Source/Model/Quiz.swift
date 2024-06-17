@@ -11,11 +11,11 @@ import SwiftData
 @Model
 final class Quiz {
     var problem: String
-    var options: [Int: String]
+    var options: [String]
     var answerNumber: Int
     var date: Date
     
-    init(problem: String, options: [Int: String], answerNumber: Int, date: Date) {
+    init(problem: String = "", options: [String] = ["", "", ""], answerNumber: Int = 0, date: Date = .now) {
         self.problem = problem
         self.options = options
         self.answerNumber = answerNumber

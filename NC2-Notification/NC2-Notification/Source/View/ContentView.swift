@@ -11,8 +11,9 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var quizzes: [Quiz]
-    @State private var showRegisterSheet: Bool = false
+    @State private var showEditorSheet: Bool = false
     @State private var isEditing: Bool = false
+    @State private var editTargetIndex: Int? = nil
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -31,19 +32,9 @@ struct ContentView: View {
             List {
                 ForEach(quizzes) { quiz in
                     Button {
-                        showRegisterSheet = true
-                        isEditing = false
+                        editQuiz(quiz: quiz)
                     } label: {
-                        VStack(alignment: .leading) {
-                            Text("\(formattedDate(quiz.date))")
-                                .font(.caption)
-                            Text("Q. \(quiz.problem)")
-                                .font(.headline)
-                                .lineLimit(2)
-                            Text("1. \(quiz.options[0] ?? ""), 2. \(quiz.options[1] ?? ""), 3. \(quiz.options[2] ?? "")\nA. \(quiz.options[quiz.answerNumber] ?? "")")
-                                .font(.subheadline)
-                                .foregroundStyle(.black.opacity(0.6))
-                        }
+                        QuizListRow(quiz: quiz)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -52,8 +43,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        addItem()
-                        showRegisterSheet = true
+                        registerQuiz()
                     } label: {
                         Label("Add Item", systemImage: "plus")
                     }
@@ -61,15 +51,16 @@ struct ContentView: View {
             }
             .navigationTitle("문제 목록")
         }
-        .sheet(isPresented: $showRegisterSheet) {
-            Text("Sheet")
+        .sheet(isPresented: $showEditorSheet) {
+            QuizFormView(isEditing: $isEditing,
+                         editTargetIndex: $editTargetIndex)
         }
     }
     
     private func addItem() {
         withAnimation {
             let newItem = Quiz(problem: "새로운 문제입니다",
-                               options: [0 : "선택지", 1 : "선택지", 2 : "선택지"],
+                               options: ["선택지", "선택지", "선택지"],
                                answerNumber: 0,
                                date: .now)
             modelContext.insert(newItem)
@@ -83,7 +74,20 @@ struct ContentView: View {
             }
         }
     }
+    
+    private func editQuiz(quiz: Quiz) {
+        showEditorSheet = true
+        isEditing = true
+        editTargetIndex = quizzes.firstIndex(of: quiz)
+    }
+    
+    private func registerQuiz() {
+        isEditing = false
+        editTargetIndex = nil
+        showEditorSheet = true
+    }
 }
+
 
 #Preview {
     ContentView()
