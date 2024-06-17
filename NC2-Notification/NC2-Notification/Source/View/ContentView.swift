@@ -10,16 +10,16 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Query private var quizzes: [Quiz]
 
     var body: some View {
-        NavigationSplitView {
+        NavigationStack {
             List {
-                ForEach(items) { item in
+                ForEach(quizzes) { quiz in
                     NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        Text("수정뷰")
                     } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        Text(quiz.problem)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -34,14 +34,15 @@ struct ContentView: View {
                     }
                 }
             }
-        } detail: {
-            Text("Select an item")
         }
     }
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(timestamp: Date())
+            let newItem = Quiz(problem: "새로운 문제입니다",
+                               options: [],
+                               answerNumber: 0,
+                               date: .now)
             modelContext.insert(newItem)
         }
     }
@@ -49,7 +50,7 @@ struct ContentView: View {
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
-                modelContext.delete(items[index])
+                modelContext.delete(quizzes[index])
             }
         }
     }
@@ -57,5 +58,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: Quiz.self, inMemory: true)
 }

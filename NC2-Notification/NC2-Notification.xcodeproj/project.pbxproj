@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3941EE5C2C1FC1CA004E2FDE /* NC2_NotificationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941EE5B2C1FC1CA004E2FDE /* NC2_NotificationApp.swift */; };
 		3941EE5E2C1FC1CA004E2FDE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941EE5D2C1FC1CA004E2FDE /* ContentView.swift */; };
-		3941EE602C1FC1CA004E2FDE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941EE5F2C1FC1CA004E2FDE /* Item.swift */; };
+		3941EE602C1FC1CA004E2FDE /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941EE5F2C1FC1CA004E2FDE /* Quiz.swift */; };
 		3941EE622C1FC1CB004E2FDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3941EE612C1FC1CB004E2FDE /* Assets.xcassets */; };
 		3941EE652C1FC1CB004E2FDE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3941EE642C1FC1CB004E2FDE /* Preview Assets.xcassets */; };
 		3941EE722C1FC440004E2FDE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3941EE712C1FC440004E2FDE /* Launch Screen.storyboard */; };
@@ -19,7 +19,7 @@
 		3941EE582C1FC1CA004E2FDE /* NC2-Notification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NC2-Notification.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3941EE5B2C1FC1CA004E2FDE /* NC2_NotificationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NC2_NotificationApp.swift; sourceTree = "<group>"; };
 		3941EE5D2C1FC1CA004E2FDE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		3941EE5F2C1FC1CA004E2FDE /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		3941EE5F2C1FC1CA004E2FDE /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		3941EE612C1FC1CB004E2FDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3941EE642C1FC1CB004E2FDE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3941EE712C1FC440004E2FDE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		3941EE6D2C1FC40F004E2FDE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3941EE5F2C1FC1CA004E2FDE /* Item.swift */,
+				3941EE5F2C1FC1CA004E2FDE /* Quiz.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,7 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3941EE5E2C1FC1CA004E2FDE /* ContentView.swift in Sources */,
-				3941EE602C1FC1CA004E2FDE /* Item.swift in Sources */,
+				3941EE602C1FC1CA004E2FDE /* Quiz.swift in Sources */,
 				3941EE5C2C1FC1CA004E2FDE /* NC2_NotificationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
