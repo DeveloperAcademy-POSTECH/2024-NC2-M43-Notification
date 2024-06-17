@@ -14,11 +14,13 @@ final class Quiz {
     var options: [String]
     var answerNumber: Int
     var date: Date
+    var id: String
     
-    init(problem: String = "", options: [String] = ["", "", ""], answerNumber: Int = 0, date: Date = .now) {
+    init(problem: String = "", options: [String] = ["", "", ""], answerNumber: Int = 0, date: Date = .now, id: String = UUID().uuidString) {
         self.problem = problem
         self.options = options
         self.answerNumber = answerNumber
         self.date = date
+        self.id = id
     }
 }

@@ -18,6 +18,8 @@ struct QuizFormView: View {
     @Binding var isEditing: Bool
     @Binding var editTargetIndex: Int?
     
+    let manager = NotificationManager.instance
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -93,7 +95,7 @@ extension QuizFormView {
     private var ApplyButton: some View {
         Button {
             isEditing ? applyEditedData()
-                      : modelContext.insert(newQuiz)
+                      : saveData()
             dismiss()
         } label: {
             Text(isEditing ? "수정" : "등록")
@@ -118,6 +120,11 @@ extension QuizFormView {
         newQuiz.date = targetQuiz.date
     }
     
+    private func saveData() {
+        modelContext.insert(newQuiz)
+        manager.scheduleQuizNotification(quiz: newQuiz)
+    }
+    
     private func applyEditedData() {
         guard let targetIndex = editTargetIndex else { return }
         let targetQuiz = quizzes[targetIndex]
@@ -126,6 +133,9 @@ extension QuizFormView {
         targetQuiz.options = newQuiz.options
         targetQuiz.answerNumber = newQuiz.answerNumber
         targetQuiz.date = newQuiz.date
+        
+        manager.cancelNotificationRequst(identifier: targetQuiz.id)
+        manager.scheduleQuizNotification(quiz: targetQuiz)
     }
 }
 

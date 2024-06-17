@@ -20,6 +20,7 @@
 		39CD45F92C2053BF00CA8BCC /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD45F52C2053BF00CA8BCC /* Pretendard-SemiBold.otf */; };
 		39CD45FA2C2053BF00CA8BCC /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD45F62C2053BF00CA8BCC /* Pretendard-Medium.otf */; };
 		39CD45FD2C20540200CA8BCC /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD45FC2C20540200CA8BCC /* Font+.swift */; };
+		39CD46012C205E6300CA8BCC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD46002C205E6300CA8BCC /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		39CD45F62C2053BF00CA8BCC /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		39CD45FC2C20540200CA8BCC /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		39CD45FE2C20553B00CA8BCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39CD46002C205E6300CA8BCC /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				3941EE6F2C1FC41A004E2FDE /* App */,
 				3941EE6E2C1FC414004E2FDE /* View */,
 				3941EE6D2C1FC40F004E2FDE /* Model */,
+				39CD45FF2C205E3400CA8BCC /* Helper */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -158,6 +161,14 @@
 				39CD45FC2C20540200CA8BCC /* Font+.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		39CD45FF2C205E3400CA8BCC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				39CD46002C205E6300CA8BCC /* NotificationManager.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +250,7 @@
 				3941EE5E2C1FC1CA004E2FDE /* ContentView.swift in Sources */,
 				3941EE742C1FE0CB004E2FDE /* QuizRegisterView.swift in Sources */,
 				3941EE602C1FC1CA004E2FDE /* Quiz.swift in Sources */,
+				39CD46012C205E6300CA8BCC /* NotificationManager.swift in Sources */,
 				3941EE5C2C1FC1CA004E2FDE /* NC2_NotificationApp.swift in Sources */,
 				39CD45F12C2026A600CA8BCC /* QuizListRow.swift in Sources */,
 			);

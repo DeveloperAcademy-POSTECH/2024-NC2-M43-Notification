@@ -16,6 +16,8 @@ struct ContentView: View {
     @State private var isEditing: Bool = false
     @State private var editTargetIndex: Int? = nil
     
+    let pushManager = NotificationManager.instance
+    
     var body: some View {
         NavigationStack {
             QuizList
@@ -29,6 +31,10 @@ struct ContentView: View {
         .sheet(isPresented: $showEditorSheet) {
             QuizFormView(isEditing: $isEditing,
                          editTargetIndex: $editTargetIndex)
+        }
+        .onAppear {
+            pushManager.requestAuthorization()
+            pushManager.removeNotification()
         }
     }
 }
