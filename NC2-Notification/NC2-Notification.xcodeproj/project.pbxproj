@@ -12,6 +12,7 @@
 		3941EE602C1FC1CA004E2FDE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941EE5F2C1FC1CA004E2FDE /* Item.swift */; };
 		3941EE622C1FC1CB004E2FDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3941EE612C1FC1CB004E2FDE /* Assets.xcassets */; };
 		3941EE652C1FC1CB004E2FDE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3941EE642C1FC1CB004E2FDE /* Preview Assets.xcassets */; };
+		3941EE722C1FC440004E2FDE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3941EE712C1FC440004E2FDE /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		3941EE5F2C1FC1CA004E2FDE /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3941EE612C1FC1CB004E2FDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3941EE642C1FC1CB004E2FDE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3941EE712C1FC440004E2FDE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,10 +55,9 @@
 		3941EE5A2C1FC1CA004E2FDE /* NC2-Notification */ = {
 			isa = PBXGroup;
 			children = (
-				3941EE5B2C1FC1CA004E2FDE /* NC2_NotificationApp.swift */,
-				3941EE5D2C1FC1CA004E2FDE /* ContentView.swift */,
-				3941EE5F2C1FC1CA004E2FDE /* Item.swift */,
-				3941EE612C1FC1CB004E2FDE /* Assets.xcassets */,
+				3941EE6C2C1FC40A004E2FDE /* Resource */,
+				3941EE6B2C1FC401004E2FDE /* Source */,
+				3941EE702C1FC426004E2FDE /* Supporting File */,
 				3941EE632C1FC1CB004E2FDE /* Preview Content */,
 			);
 			path = "NC2-Notification";
@@ -68,6 +69,56 @@
 				3941EE642C1FC1CB004E2FDE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3941EE6B2C1FC401004E2FDE /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				3941EE6F2C1FC41A004E2FDE /* App */,
+				3941EE6E2C1FC414004E2FDE /* View */,
+				3941EE6D2C1FC40F004E2FDE /* Model */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		3941EE6C2C1FC40A004E2FDE /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				3941EE612C1FC1CB004E2FDE /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		3941EE6D2C1FC40F004E2FDE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3941EE5F2C1FC1CA004E2FDE /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3941EE6E2C1FC414004E2FDE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3941EE5D2C1FC1CA004E2FDE /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3941EE6F2C1FC41A004E2FDE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3941EE5B2C1FC1CA004E2FDE /* NC2_NotificationApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3941EE702C1FC426004E2FDE /* Supporting File */ = {
+			isa = PBXGroup;
+			children = (
+				3941EE712C1FC440004E2FDE /* Launch Screen.storyboard */,
+			);
+			path = "Supporting File";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +179,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3941EE722C1FC440004E2FDE /* Launch Screen.storyboard in Resources */,
 				3941EE652C1FC1CB004E2FDE /* Preview Assets.xcassets in Resources */,
 				3941EE622C1FC1CB004E2FDE /* Assets.xcassets in Resources */,
 			);
