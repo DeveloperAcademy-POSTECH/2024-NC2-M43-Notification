@@ -15,6 +15,11 @@
 		3941EE722C1FC440004E2FDE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3941EE712C1FC440004E2FDE /* Launch Screen.storyboard */; };
 		3941EE742C1FE0CB004E2FDE /* QuizRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941EE732C1FE0CB004E2FDE /* QuizRegisterView.swift */; };
 		39CD45F12C2026A600CA8BCC /* QuizListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD45F02C2026A600CA8BCC /* QuizListRow.swift */; };
+		39CD45F72C2053BF00CA8BCC /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD45F32C2053BF00CA8BCC /* Pretendard-Regular.otf */; };
+		39CD45F82C2053BF00CA8BCC /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD45F42C2053BF00CA8BCC /* Pretendard-Bold.otf */; };
+		39CD45F92C2053BF00CA8BCC /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD45F52C2053BF00CA8BCC /* Pretendard-SemiBold.otf */; };
+		39CD45FA2C2053BF00CA8BCC /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD45F62C2053BF00CA8BCC /* Pretendard-Medium.otf */; };
+		39CD45FD2C20540200CA8BCC /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD45FC2C20540200CA8BCC /* Font+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +32,12 @@
 		3941EE712C1FC440004E2FDE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		3941EE732C1FE0CB004E2FDE /* QuizRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRegisterView.swift; sourceTree = "<group>"; };
 		39CD45F02C2026A600CA8BCC /* QuizListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListRow.swift; sourceTree = "<group>"; };
+		39CD45F32C2053BF00CA8BCC /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		39CD45F42C2053BF00CA8BCC /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		39CD45F52C2053BF00CA8BCC /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		39CD45F62C2053BF00CA8BCC /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		39CD45FC2C20540200CA8BCC /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		39CD45FE2C20553B00CA8BCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +99,8 @@
 		3941EE6C2C1FC40A004E2FDE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				39CD45F22C20539800CA8BCC /* Font */,
+				39CD45FB2C2053CE00CA8BCC /* Extension */,
 				3941EE612C1FC1CB004E2FDE /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -122,9 +135,29 @@
 		3941EE702C1FC426004E2FDE /* Supporting File */ = {
 			isa = PBXGroup;
 			children = (
+				39CD45FE2C20553B00CA8BCC /* Info.plist */,
 				3941EE712C1FC440004E2FDE /* Launch Screen.storyboard */,
 			);
 			path = "Supporting File";
+			sourceTree = "<group>";
+		};
+		39CD45F22C20539800CA8BCC /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				39CD45F42C2053BF00CA8BCC /* Pretendard-Bold.otf */,
+				39CD45F52C2053BF00CA8BCC /* Pretendard-SemiBold.otf */,
+				39CD45F32C2053BF00CA8BCC /* Pretendard-Regular.otf */,
+				39CD45F62C2053BF00CA8BCC /* Pretendard-Medium.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		39CD45FB2C2053CE00CA8BCC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				39CD45FC2C20540200CA8BCC /* Font+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,7 +218,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39CD45FA2C2053BF00CA8BCC /* Pretendard-Medium.otf in Resources */,
 				3941EE722C1FC440004E2FDE /* Launch Screen.storyboard in Resources */,
+				39CD45F82C2053BF00CA8BCC /* Pretendard-Bold.otf in Resources */,
+				39CD45F72C2053BF00CA8BCC /* Pretendard-Regular.otf in Resources */,
+				39CD45F92C2053BF00CA8BCC /* Pretendard-SemiBold.otf in Resources */,
 				3941EE652C1FC1CB004E2FDE /* Preview Assets.xcassets in Resources */,
 				3941EE622C1FC1CB004E2FDE /* Assets.xcassets in Resources */,
 			);
@@ -198,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39CD45FD2C20540200CA8BCC /* Font+.swift in Sources */,
 				3941EE5E2C1FC1CA004E2FDE /* ContentView.swift in Sources */,
 				3941EE742C1FE0CB004E2FDE /* QuizRegisterView.swift in Sources */,
 				3941EE602C1FC1CA004E2FDE /* Quiz.swift in Sources */,
@@ -339,6 +377,7 @@
 				DEVELOPMENT_TEAM = D23XDL6TZZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NC2-Notification/Supporting File/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -373,6 +412,7 @@
 				DEVELOPMENT_TEAM = D23XDL6TZZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NC2-Notification/Supporting File/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -42,6 +42,7 @@ extension ContentView {
                 } label: {
                     QuizListRow(quiz: quiz, dateFormatter: dateFormatter)
                 }
+                .listRowSeparator(.hidden)
             }
             .onDelete(perform: deleteItems)
         }

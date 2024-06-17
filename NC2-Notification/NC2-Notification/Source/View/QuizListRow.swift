@@ -16,15 +16,55 @@ struct QuizListRow: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("\(formattedDate(quiz.date))")
-                .font(.caption)
-            Text("Q. \(quiz.problem)")
-                .font(.headline)
-                .lineLimit(2)
-            Text("1. \(quiz.options[0]), 2. \(quiz.options[1]), 3. \(quiz.options[2])\nA. \(quiz.options[quiz.answerNumber])")
-                .font(.subheadline)
-                .foregroundStyle(.black.opacity(0.6))
+        VStack(alignment: .leading, spacing: 12) {
+            PushDate
+            ProblemText
+            AnswerList
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 16)
+        .background {
+            RoundedRectangle(cornerRadius: 14)
+                .foregroundStyle(.nc2Blue)
+        }
+    }
+}
+
+extension QuizListRow {
+    private var PushDate: some View {
+        Text("\(formattedDate(quiz.date))")
+            .font(.pretendard(weight: .regular, size: 11))
+    }
+    
+    private var ProblemText: some View {
+        Text("Q. \(quiz.problem)")
+            .font(.pretendard(weight: .bold, size: 20.5))
+            .lineLimit(2)
+    }
+    
+    private var AnswerList: some View {
+        VStack(spacing: 8) {
+            ForEach(0..<quiz.options.count, id: \.self) { index in
+                HStack {
+                    Text("\(index+1)) \(quiz.options[index])")
+                    Spacer()
+                }
+                .font(.pretendard(weight: .regular, size: 14))
+                .overlay(alignment: .trailing) {
+                    if index == quiz.answerNumber {
+                        Image(systemName: "checkmark.circle")
+                            .foregroundStyle(.nc2Green)
+                            .bold()
+                            .font(.system(size: 20))
+                    }
+                }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 12)
+                .background {
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundStyle(.white)
+                }
+            }
         }
     }
 }
