@@ -11,10 +11,6 @@ struct QuizListRow: View {
     let quiz: Quiz
     let dateFormatter: DateFormatter
     
-    private func formattedDate(_ date: Date) -> String {
-        return dateFormatter.string(from: date)
-    }
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             PushDate
@@ -66,6 +62,12 @@ extension QuizListRow {
                 }
             }
         }
+    }
+}
+
+extension QuizListRow {
+    private func formattedDate(_ date: Date) -> String {
+        return dateFormatter.string(from: date)
     }
 }
 

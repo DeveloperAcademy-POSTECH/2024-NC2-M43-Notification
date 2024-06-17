@@ -61,7 +61,7 @@ extension ContentView {
 extension ContentView {
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd(EEE) H시"
+        formatter.dateFormat = "yyyy.MM.dd(EEE) H시 m분"
         formatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         formatter.locale = Locale(identifier: "ko_KR")
         return formatter
