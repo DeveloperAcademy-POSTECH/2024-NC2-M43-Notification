@@ -9,14 +9,7 @@ import SwiftUI
 
 struct QuizListRow: View {
     let quiz: Quiz
-    
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd(EEE)"
-        formatter.timeZone = TimeZone(identifier: "Asia/Seoul")
-        formatter.locale = Locale(identifier: "ko_KR")
-        return formatter
-    }
+    let dateFormatter: DateFormatter
     
     private func formattedDate(_ date: Date) -> String {
         return dateFormatter.string(from: date)

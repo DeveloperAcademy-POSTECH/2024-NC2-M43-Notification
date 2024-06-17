@@ -10,15 +10,10 @@ import SwiftData
 
 struct QuizFormView: View {
     @Environment(\.dismiss) private var dismiss
-    
     @Environment(\.modelContext) private var modelContext
     @Query private var quizzes: [Quiz]
     
     @State private var newQuiz: Quiz = Quiz()
-    @State private var problem: String = ""
-    @State private var options: [String] = ["", "", ""]
-    @State private var answerNumber: Int = 0
-    @State private var date: Date = Date()
     
     @Binding var isEditing: Bool
     @Binding var editTargetIndex: Int?
@@ -84,7 +79,7 @@ extension QuizFormView {
         Section {
             DatePicker("퀴즈 날짜",
                        selection: $newQuiz.date,
-                       displayedComponents: .date)
+                       displayedComponents: [.date, .hourAndMinute])
                 .datePickerStyle(.compact)
         }
     }
@@ -106,13 +101,13 @@ extension QuizFormView {
         }
         .disabled(buttonDisabled)
     }
-    
-    private var buttonDisabled: Bool {
-        return newQuiz.problem.isEmpty || newQuiz.options.contains("")
-    }
 }
 
 extension QuizFormView {
+    private var buttonDisabled: Bool {
+        return newQuiz.problem.isEmpty || newQuiz.options.contains("")
+    }
+    
     private func applyTargetData() {
         guard let targetIndex = editTargetIndex else { return }
         let targetQuiz = quizzes[targetIndex]

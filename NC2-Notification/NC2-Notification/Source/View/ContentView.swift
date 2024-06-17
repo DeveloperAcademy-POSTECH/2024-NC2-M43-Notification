@@ -11,42 +11,17 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var quizzes: [Quiz]
+    
     @State private var showEditorSheet: Bool = false
     @State private var isEditing: Bool = false
     @State private var editTargetIndex: Int? = nil
     
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd(EEE)"
-        formatter.timeZone = TimeZone(identifier: "Asia/Seoul")
-        formatter.locale = Locale(identifier: "ko_KR")
-        return formatter
-    }
-    
-    private func formattedDate(_ date: Date) -> String {
-        return dateFormatter.string(from: date)
-    }
-    
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(quizzes) { quiz in
-                    Button {
-                        editQuiz(quiz: quiz)
-                    } label: {
-                        QuizListRow(quiz: quiz)
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .listStyle(.plain)
+            QuizList
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        registerQuiz()
-                    } label: {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                    AddButton
                 }
             }
             .navigationTitle("문제 목록")
@@ -56,15 +31,39 @@ struct ContentView: View {
                          editTargetIndex: $editTargetIndex)
         }
     }
-    
-    private func addItem() {
-        withAnimation {
-            let newItem = Quiz(problem: "새로운 문제입니다",
-                               options: ["선택지", "선택지", "선택지"],
-                               answerNumber: 0,
-                               date: .now)
-            modelContext.insert(newItem)
+}
+
+extension ContentView {
+    private var QuizList: some View {
+        List {
+            ForEach(quizzes) { quiz in
+                Button {
+                    editQuiz(quiz: quiz)
+                } label: {
+                    QuizListRow(quiz: quiz, dateFormatter: dateFormatter)
+                }
+            }
+            .onDelete(perform: deleteItems)
         }
+        .listStyle(.plain)
+    }
+    
+    private var AddButton: some View {
+        Button {
+            registerQuiz()
+        } label: {
+            Label("Add Item", systemImage: "plus")
+        }
+    }
+}
+
+extension ContentView {
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd(EEE) H시"
+        formatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter
     }
     
     private func deleteItems(offsets: IndexSet) {
