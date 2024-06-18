@@ -13,7 +13,7 @@ struct Main: View {
             VStack(spacing: 0) {
                 Spacer().frame(height: 36)
                 Title
-                Spacer().frame(height: 24)
+                Spacer().frame(height: 36)
                 Banner
                 Spacer().frame(height: 32)
                 RoleButtonSection
@@ -21,6 +21,7 @@ struct Main: View {
             }
             .padding(20)
             .background(Color.nc2Blue)
+            .navigationTitle("")
         }
     }
 }
@@ -50,7 +51,7 @@ extension Main {
             }
             
             NavigationLink {
-                Text("Customer")
+                CustomerView()
             } label: {
                 RoleButton(role: .customer)
             }

@@ -27,6 +27,7 @@ struct QuizMakerView: View {
                 }
             }
             .navigationTitle("문제를 저장하세요!📂")
+            .navigationBarTitleDisplayMode(.large)
             .background(Color.nc2Blue)
         }
         .sheet(isPresented: $showEditorSheet) {
@@ -57,6 +58,7 @@ extension QuizMakerView {
             }
             .onDelete(perform: deleteItems)
         }
+        .contentMargins(.top, 16, for: .scrollContent)
         .listStyle(.plain)
     }
     
@@ -64,7 +66,8 @@ extension QuizMakerView {
         Button {
             registerQuiz()
         } label: {
-            Label("Add Item", systemImage: "plus")
+            Image(systemName: "plus")
+                .fontWeight(.semibold)
         }
     }
 }

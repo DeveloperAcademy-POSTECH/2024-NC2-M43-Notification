@@ -21,7 +21,7 @@ struct RoleButton: View {
         .background {
             RoundedRectangle(cornerRadius: 14)
                 .foregroundStyle(.white)
-                .shadow(color: .black.opacity(0.25), radius: 5)
+                .shadow(color: .black.opacity(0.25), radius: 4)
         }
     }
 }
