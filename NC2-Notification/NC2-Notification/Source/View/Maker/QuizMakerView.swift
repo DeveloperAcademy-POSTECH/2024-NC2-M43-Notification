@@ -16,8 +16,6 @@ struct QuizMakerView: View {
     @State private var isEditing: Bool = false
     @State private var editTargetIndex: Int? = nil
     
-    let pushManager = NotificationManager.instance
-    
     var body: some View {
         NavigationStack {
             QuizList
@@ -28,15 +26,11 @@ struct QuizMakerView: View {
             }
             .navigationTitle("문제를 저장하세요!📂")
             .navigationBarTitleDisplayMode(.large)
-            .background(Color.nc2Blue)
+            .background(Color.nc2Blue20)
         }
         .sheet(isPresented: $showEditorSheet) {
             QuizFormView(isEditing: $isEditing,
                          editTargetIndex: $editTargetIndex)
-        }
-        .onAppear {
-            pushManager.requestAuthorization()
-            pushManager.removeNotification()
         }
     }
 }
@@ -44,7 +38,7 @@ struct QuizMakerView: View {
 extension QuizMakerView {
     private var QuizList: some View {
         List {
-            ForEach(quizzes) { quiz in
+            ForEach(sortedQuizzes) { quiz in
                 Button {
                     editQuiz(quiz: quiz)
                 } label: {
@@ -54,7 +48,7 @@ extension QuizMakerView {
                 .listRowSeparator(.hidden)
                 .padding(.horizontal, 20)
                 .padding(.vertical, 8)
-                .background(Color.nc2Blue)
+                .background(Color.nc2Blue20)
             }
             .onDelete(perform: deleteItems)
         }
@@ -73,6 +67,10 @@ extension QuizMakerView {
 }
 
 extension QuizMakerView {
+    var sortedQuizzes: [Quiz] {
+        quizzes.sorted { $0.date > $1.date }
+    }
+    
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd(EEE) H시 mm분"

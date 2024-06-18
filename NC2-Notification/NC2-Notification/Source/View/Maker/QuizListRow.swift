@@ -43,7 +43,6 @@ extension QuizRow {
     private var ProblemText: some View {
         Text("Q. \(quiz.problem)")
             .font(.pretendard(weight: .bold, size: 17))
-            .lineLimit(2)
     }
     
     private var AnswerList: some View {

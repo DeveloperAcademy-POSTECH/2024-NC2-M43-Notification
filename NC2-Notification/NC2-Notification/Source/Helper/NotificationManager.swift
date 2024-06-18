@@ -13,10 +13,12 @@ class NotificationManager: NSObject {
     static let instance = NotificationManager()
     private override init() {
         super.init()
+        UNUserNotificationCenter.current().delegate = self
     }
     
     var notificationIdentifiers: [String] = []
     var badgeCount = 0
+    var selectedAnswer: Int? = nil
     
     func requestAuthorization() {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
@@ -51,6 +53,23 @@ class NotificationManager: NSObject {
     }
     
     func scheduleQuizNotification(quiz: Quiz) {
+        
+        var actions: [UNNotificationAction] = []
+        for index in 0..<quiz.options.count {
+            let option = quiz.options[index]
+            let action = UNNotificationAction(identifier: "\(index)",
+                                              title: "\(index+1)) \(option)",
+                                              options: .foreground)
+            actions.append(action)
+        }
+        let categoryIdentifier = "QUIZ_CATEGORY"
+        let quizAnswerCategory = UNNotificationCategory(identifier: categoryIdentifier,
+                                                        actions: actions,
+                                                        intentIdentifiers: [],
+                                                        options: .customDismissAction)
+        
+        UNUserNotificationCenter.current().setNotificationCategories([quizAnswerCategory])
+        
         badgeCount += 1
         let content = UNMutableNotificationContent()
         content.title = "알림을 꾸욱 눌러 문제를 풀어보세요."
@@ -58,8 +77,8 @@ class NotificationManager: NSObject {
         // content.subtitle = "알림을 꾸욱 눌러 문제를 풀어보세요."
         content.body = quiz.problem
         content.sound = .default
-        
         content.badge = (badgeCount) as NSNumber
+        content.categoryIdentifier = categoryIdentifier
         
         let trigger = dateNotification(date: quiz.date, isRepeated: false)
         let request = UNNotificationRequest(identifier: quiz.id, content: content, trigger: trigger)
@@ -82,17 +101,23 @@ class NotificationManager: NSObject {
     }
 }
 
-//extension NotificationManager: UNUserNotificationCenterDelegate {
-//    // NotificationCenter Delegate Method
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-//        badgeCount += 1
-//        UNUserNotificationCenter.current().setBadgeCount(badgeCount, withCompletionHandler: nil)
-//        completionHandler([.sound, .badge])
-//    }
-//    
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//        badgeCount += 1
-//        UNUserNotificationCenter.current().setBadgeCount(badgeCount, withCompletionHandler: nil)
-//        completionHandler()
-//    }
-//}
+extension NotificationManager: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.sound, .badge, .banner])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.actionIdentifier {
+        case "0":
+            selectedAnswer = 0
+        case "1":
+            selectedAnswer = 1
+        case "2":
+            selectedAnswer = 2
+        default:
+            selectedAnswer = nil
+        }
+        completionHandler()
+    }
+}

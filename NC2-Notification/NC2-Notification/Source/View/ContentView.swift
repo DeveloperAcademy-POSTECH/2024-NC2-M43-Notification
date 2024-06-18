@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    let pushManager = NotificationManager.instance
+    
     var body: some View {
         Main()
+            .onAppear {
+                pushManager.requestAuthorization()
+                pushManager.removeNotification()
+            }
     }
 }
 

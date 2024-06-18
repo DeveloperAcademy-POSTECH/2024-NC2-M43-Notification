@@ -20,7 +20,7 @@ struct Main: View {
                 Spacer()
             }
             .padding(20)
-            .background(Color.nc2Blue)
+            .background(Color.nc2Blue20)
             .navigationTitle("")
         }
     }
