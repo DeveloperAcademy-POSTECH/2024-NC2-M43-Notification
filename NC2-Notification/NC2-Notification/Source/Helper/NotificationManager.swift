@@ -58,6 +58,7 @@ class NotificationManager: NSObject {
         // content.subtitle = "알림을 꾸욱 눌러 문제를 풀어보세요."
         content.body = quiz.problem
         content.sound = .default
+        
         content.badge = (badgeCount) as NSNumber
         
         let trigger = dateNotification(date: quiz.date, isRepeated: false)

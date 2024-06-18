@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3941EE5C2C1FC1CA004E2FDE /* NC2_NotificationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941EE5B2C1FC1CA004E2FDE /* NC2_NotificationApp.swift */; };
-		3941EE5E2C1FC1CA004E2FDE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941EE5D2C1FC1CA004E2FDE /* ContentView.swift */; };
+		3941EE5E2C1FC1CA004E2FDE /* QuizMakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941EE5D2C1FC1CA004E2FDE /* QuizMakerView.swift */; };
 		3941EE602C1FC1CA004E2FDE /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941EE5F2C1FC1CA004E2FDE /* Quiz.swift */; };
 		3941EE622C1FC1CB004E2FDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3941EE612C1FC1CB004E2FDE /* Assets.xcassets */; };
 		3941EE652C1FC1CB004E2FDE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3941EE642C1FC1CB004E2FDE /* Preview Assets.xcassets */; };
@@ -21,12 +21,15 @@
 		39CD45FA2C2053BF00CA8BCC /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD45F62C2053BF00CA8BCC /* Pretendard-Medium.otf */; };
 		39CD45FD2C20540200CA8BCC /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD45FC2C20540200CA8BCC /* Font+.swift */; };
 		39CD46012C205E6300CA8BCC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD46002C205E6300CA8BCC /* NotificationManager.swift */; };
+		39CD46032C21180200CA8BCC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD46022C21180200CA8BCC /* ContentView.swift */; };
+		39CD46082C211D7000CA8BCC /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD46072C211D7000CA8BCC /* Main.swift */; };
+		39CD460A2C211DAA00CA8BCC /* RoleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD46092C211DAA00CA8BCC /* RoleButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3941EE582C1FC1CA004E2FDE /* NC2-Notification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NC2-Notification.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3941EE5B2C1FC1CA004E2FDE /* NC2_NotificationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NC2_NotificationApp.swift; sourceTree = "<group>"; };
-		3941EE5D2C1FC1CA004E2FDE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3941EE5D2C1FC1CA004E2FDE /* QuizMakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizMakerView.swift; sourceTree = "<group>"; };
 		3941EE5F2C1FC1CA004E2FDE /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		3941EE612C1FC1CB004E2FDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3941EE642C1FC1CB004E2FDE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -40,6 +43,9 @@
 		39CD45FC2C20540200CA8BCC /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		39CD45FE2C20553B00CA8BCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39CD46002C205E6300CA8BCC /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		39CD46022C21180200CA8BCC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		39CD46072C211D7000CA8BCC /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		39CD46092C211DAA00CA8BCC /* RoleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,9 +126,10 @@
 		3941EE6E2C1FC414004E2FDE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3941EE5D2C1FC1CA004E2FDE /* ContentView.swift */,
-				3941EE732C1FE0CB004E2FDE /* QuizRegisterView.swift */,
-				39CD45F02C2026A600CA8BCC /* QuizListRow.swift */,
+				39CD46022C21180200CA8BCC /* ContentView.swift */,
+				39CD46062C211D6400CA8BCC /* Main */,
+				39CD46042C21180700CA8BCC /* Maker */,
+				39CD46052C21186500CA8BCC /* Customer */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +176,32 @@
 				39CD46002C205E6300CA8BCC /* NotificationManager.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		39CD46042C21180700CA8BCC /* Maker */ = {
+			isa = PBXGroup;
+			children = (
+				3941EE5D2C1FC1CA004E2FDE /* QuizMakerView.swift */,
+				3941EE732C1FE0CB004E2FDE /* QuizRegisterView.swift */,
+				39CD45F02C2026A600CA8BCC /* QuizListRow.swift */,
+			);
+			path = Maker;
+			sourceTree = "<group>";
+		};
+		39CD46052C21186500CA8BCC /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Customer;
+			sourceTree = "<group>";
+		};
+		39CD46062C211D6400CA8BCC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				39CD46072C211D7000CA8BCC /* Main.swift */,
+				39CD46092C211DAA00CA8BCC /* RoleButton.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,8 +279,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39CD46082C211D7000CA8BCC /* Main.swift in Sources */,
 				39CD45FD2C20540200CA8BCC /* Font+.swift in Sources */,
-				3941EE5E2C1FC1CA004E2FDE /* ContentView.swift in Sources */,
+				3941EE5E2C1FC1CA004E2FDE /* QuizMakerView.swift in Sources */,
+				39CD460A2C211DAA00CA8BCC /* RoleButton.swift in Sources */,
+				39CD46032C21180200CA8BCC /* ContentView.swift in Sources */,
 				3941EE742C1FE0CB004E2FDE /* QuizRegisterView.swift in Sources */,
 				3941EE602C1FC1CA004E2FDE /* Quiz.swift in Sources */,
 				39CD46012C205E6300CA8BCC /* NotificationManager.swift in Sources */,
