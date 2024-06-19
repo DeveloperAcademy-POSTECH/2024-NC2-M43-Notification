@@ -9,7 +9,6 @@ import SwiftUI
 
 struct Main: View {
     var body: some View {
-        NavigationStack {
             VStack(spacing: 0) {
                 Spacer().frame(height: 36)
                 Title
@@ -22,7 +21,6 @@ struct Main: View {
             .padding(20)
             .background(Color.nc2Blue20)
             .navigationTitle("")
-        }
     }
 }
 
@@ -44,14 +42,14 @@ extension Main {
     
     var RoleButtonSection: some View {
         VStack(spacing: 16) {
-            NavigationLink {
-                QuizMakerView()
+            Button {
+                NavigationManager.shared.push(to: .quizMaker)
             } label: {
                 RoleButton(role: .maker)
             }
             
-            NavigationLink {
-                CustomerView()
+            Button {
+                NavigationManager.shared.push(to: .customer(selectedAnswer: nil, quizIndex: 0))
             } label: {
                 RoleButton(role: .customer)
             }

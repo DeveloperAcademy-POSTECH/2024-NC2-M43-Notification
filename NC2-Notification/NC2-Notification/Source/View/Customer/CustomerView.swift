@@ -34,7 +34,6 @@ struct CustomerView: View {
                 ProblemText
                 Spacer().frame(height: 50)
             } else if isRightSelection {
-                //Spacer().frame(height: 20)
                 Image(.answerBanner)
                 Spacer().frame(height: 20)
                 Rectangle().frame(width: 90, height: 1)
@@ -43,7 +42,6 @@ struct CustomerView: View {
                 ProblemText
                 Spacer().frame(height: 20)
             } else {
-                //Spacer().frame(height: 20)
                 Image(.wrongAnswerBanner)
                 Spacer().frame(height: 20)
                 Rectangle().frame(width: 90, height: 1)
