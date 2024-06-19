@@ -122,7 +122,10 @@ extension QuizFormView {
     
     private func saveData() {
         modelContext.insert(newQuiz)
-        manager.scheduleQuizNotification(quiz: newQuiz)
+        if let quizIndex = quizzes.firstIndex(of: newQuiz) {
+            manager.scheduleQuizNotification(quiz: newQuiz, quizIndex: quizIndex)
+        }
+       
     }
     
     private func applyEditedData() {
@@ -134,8 +137,12 @@ extension QuizFormView {
         targetQuiz.answerNumber = newQuiz.answerNumber
         targetQuiz.date = newQuiz.date
         
-        manager.cancelNotificationRequst(identifier: targetQuiz.id)
-        manager.scheduleQuizNotification(quiz: targetQuiz)
+        if let quizIndex = quizzes.firstIndex(of: targetQuiz) {
+            manager.cancelNotificationRequst(identifier: targetQuiz.id)
+            manager.scheduleQuizNotification(quiz: targetQuiz, quizIndex: quizIndex)
+
+        }
+        
     }
 }
 

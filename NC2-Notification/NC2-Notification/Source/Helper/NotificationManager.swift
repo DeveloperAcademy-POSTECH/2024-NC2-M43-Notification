@@ -52,7 +52,7 @@ class NotificationManager: NSObject {
         return UNCalendarNotificationTrigger(dateMatching: components, repeats: isRepeated)
     }
     
-    func scheduleQuizNotification(quiz: Quiz) {
+    func scheduleQuizNotification(quiz: Quiz, quizIndex: Int) {
         
         var actions: [UNNotificationAction] = []
         for index in 0..<quiz.options.count {
@@ -79,6 +79,7 @@ class NotificationManager: NSObject {
         content.sound = .default
         content.badge = (badgeCount) as NSNumber
         content.categoryIdentifier = categoryIdentifier
+        content.userInfo = ["quizIndex": quizIndex]
         
         let trigger = dateNotification(date: quiz.date, isRepeated: false)
         let request = UNNotificationRequest(identifier: quiz.id, content: content, trigger: trigger)
@@ -108,6 +109,8 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let quizIndex = response.notification.request.content.userInfo["quizIndex"] as? Int
+        
         switch response.actionIdentifier {
         case "0":
             selectedAnswer = 0
@@ -118,6 +121,10 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
         default:
             selectedAnswer = nil
         }
+        
+        removeNotification()
+        NavigationManager.shared.pushNotificatinoResult(selectedAnswer: selectedAnswer,
+                                                        quizIndex: quizIndex)
         completionHandler()
     }
 }

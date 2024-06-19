@@ -9,13 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     let pushManager = NotificationManager.instance
+    @State private var navigationManager = NavigationManager.shared
     
     var body: some View {
-        Main()
-            .onAppear {
-                pushManager.requestAuthorization()
-                pushManager.removeNotification()
-            }
+        NavigationStack(path: $navigationManager.path) {
+            Main()
+                .onAppear {
+                    pushManager.requestAuthorization()
+                    pushManager.removeNotification()
+                }
+                .navigationDestination(for: PathType.self) { path in
+                    path.NavigatingView()
+                }
+        }
     }
 }
 

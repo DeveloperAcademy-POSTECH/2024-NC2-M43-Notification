@@ -25,6 +25,7 @@
 		39CD46082C211D7000CA8BCC /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD46072C211D7000CA8BCC /* Main.swift */; };
 		39CD460A2C211DAA00CA8BCC /* RoleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD46092C211DAA00CA8BCC /* RoleButton.swift */; };
 		39CD460C2C212A3B00CA8BCC /* CustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD460B2C212A3B00CA8BCC /* CustomerView.swift */; };
+		39CD460E2C22ABB300CA8BCC /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD460D2C22ABB200CA8BCC /* NavigationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		39CD46072C211D7000CA8BCC /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		39CD46092C211DAA00CA8BCC /* RoleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleButton.swift; sourceTree = "<group>"; };
 		39CD460B2C212A3B00CA8BCC /* CustomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerView.swift; sourceTree = "<group>"; };
+		39CD460D2C22ABB200CA8BCC /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				39CD46002C205E6300CA8BCC /* NotificationManager.swift */,
+				39CD460D2C22ABB200CA8BCC /* NavigationManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				3941EE5E2C1FC1CA004E2FDE /* QuizMakerView.swift in Sources */,
 				39CD460A2C211DAA00CA8BCC /* RoleButton.swift in Sources */,
 				39CD46032C21180200CA8BCC /* ContentView.swift in Sources */,
+				39CD460E2C22ABB300CA8BCC /* NavigationManager.swift in Sources */,
 				3941EE742C1FE0CB004E2FDE /* QuizRegisterView.swift in Sources */,
 				3941EE602C1FC1CA004E2FDE /* Quiz.swift in Sources */,
 				39CD46012C205E6300CA8BCC /* NotificationManager.swift in Sources */,

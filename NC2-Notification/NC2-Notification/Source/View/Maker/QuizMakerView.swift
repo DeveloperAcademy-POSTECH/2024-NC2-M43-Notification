@@ -17,7 +17,6 @@ struct QuizMakerView: View {
     @State private var editTargetIndex: Int? = nil
     
     var body: some View {
-        NavigationStack {
             QuizList
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -27,12 +26,11 @@ struct QuizMakerView: View {
             .navigationTitle("문제를 저장하세요!📂")
             .navigationBarTitleDisplayMode(.large)
             .background(Color.nc2Blue20)
+            .sheet(isPresented: $showEditorSheet) {
+                QuizFormView(isEditing: $isEditing,
+                             editTargetIndex: $editTargetIndex)
+            }
         }
-        .sheet(isPresented: $showEditorSheet) {
-            QuizFormView(isEditing: $isEditing,
-                         editTargetIndex: $editTargetIndex)
-        }
-    }
 }
 
 extension QuizMakerView {
