@@ -34,4 +34,82 @@ Date Trigger를 이용한 Local notification을 기반으로, Actionable Notific
 (프로토타입과 설명 추가)
 
 ## 🛠️ About Code
-(핵심 코드에 대한 설명 추가)
+- 퀴즈 정보를 받아 알림을 추가하는 코드입니다. 알림에 관한 내용은 모두 NotificationManager 클래스를 만들어 관리하고 있습니다.
+  ```swift
+    func scheduleQuizNotification(quiz: Quiz, quizIndex: Int) {
+        var content = makeNotificationContent(quiz: quiz, quizIndex: quizIndex)
+        
+        let categoryIdentifier = "QUIZ_CATEGORY"
+        content.categoryIdentifier = categoryIdentifier
+        addActionButton(quiz: quiz, categoryIdentifier: categoryIdentifier)
+        
+        let trigger = makeNotificationDateTrigger(date: quiz.date, isRepeated: false)
+        
+        let request = UNNotificationRequest(identifier: quiz.id, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+    }
+  ```
+- 퀴즈 정보를 바탕으로 알림의 내용(제목, 본문, 소리, 뱃지, 관련 데이터)을 구성합니다.
+  ```swift
+    func makeNotificationContent(quiz: Quiz, quizIndex: Int) -> UNMutableNotificationContent {
+        badgeCount += 1
+        
+        let content = UNMutableNotificationContent()
+        content.title = "알림을 꾸욱 눌러 문제를 풀어보세요."
+        content.body = "Q. \(quiz.problem)"
+        content.sound = .default
+        content.badge = (badgeCount) as NSNumber
+        content.userInfo = ["quizIndex": quizIndex]
+        return content
+    }
+  ```
+- 퀴즈 정보를 바탕으로 알림의 액션 버튼을 추가합니다.
+  ```swift
+    func addActionButton(quiz: Quiz, categoryIdentifier: String) {
+        var actions: [UNNotificationAction] = []
+        for index in 0..<quiz.options.count {
+            let option = quiz.options[index]
+            let action = UNNotificationAction(identifier: "\(index)",
+                                              title: "\(index+1)) \(option)",
+                                              options: .foreground)
+            actions.append(action)
+        }
+        let categoryIdentifier = categoryIdentifier
+        let quizAnswerCategory = UNNotificationCategory(identifier: categoryIdentifier,
+                                                        actions: actions,
+                                                        intentIdentifiers: [],
+                                                        options: .allowInCarPlay)
+        
+        UNUserNotificationCenter.current().setNotificationCategories([quizAnswerCategory])
+    }
+  ```
+- 퀴즈 정보의 Date를 통해 알림의 Trigger를 생성합니다.
+  ```swift
+    func makeNotificationDateTrigger(date: Date, isRepeated: Bool) -> UNNotificationTrigger {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        return UNCalendarNotificationTrigger(dateMatching: components, repeats: isRepeated)
+    }
+  ```
+- 사용자가 선택한 액션 버튼에 따라 결과를 처리합니다.
+  ```swift
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let quizIndex = response.notification.request.content.userInfo["quizIndex"] as? Int
+        
+        switch response.actionIdentifier {
+        case "0":
+            selectedAnswer = 0
+        case "1":
+            selectedAnswer = 1
+        case "2":
+            selectedAnswer = 2
+        default:
+            selectedAnswer = nil
+        }
+        
+        removeNotification()
+        NavigationManager.shared.pushNotificatinoResult(selectedAnswer: selectedAnswer,
+                                                        quizIndex: quizIndex)
+        completionHandler()
+    }
+  ```
