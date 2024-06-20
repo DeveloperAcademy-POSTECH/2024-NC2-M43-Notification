@@ -75,7 +75,7 @@ class NotificationManager: NSObject {
         content.title = "알림을 꾸욱 눌러 문제를 풀어보세요."
         // content.title = "오늘의 문제가 도착했어요!"
         // content.subtitle = "알림을 꾸욱 눌러 문제를 풀어보세요."
-        content.body = quiz.problem
+        content.body = "Q) \(quiz.problem)"
         content.sound = .default
         content.badge = (badgeCount) as NSNumber
         content.categoryIdentifier = categoryIdentifier

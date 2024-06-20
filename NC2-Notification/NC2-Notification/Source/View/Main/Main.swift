@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct Main: View {
+    @Query var quizzes: [Quiz]
+    
     var body: some View {
             VStack(spacing: 0) {
                 Spacer().frame(height: 36)
@@ -49,7 +52,7 @@ extension Main {
             }
             
             Button {
-                NavigationManager.shared.push(to: .customer(selectedAnswer: nil, quizIndex: 0))
+                NavigationManager.shared.push(to: .customer(selectedAnswer: nil, quizIndex: quizzes.count-1))
             } label: {
                 RoleButton(role: .customer)
             }

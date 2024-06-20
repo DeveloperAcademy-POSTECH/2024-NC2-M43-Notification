@@ -139,8 +139,8 @@ extension QuizFormView {
         
         if let quizIndex = quizzes.firstIndex(of: targetQuiz) {
             manager.cancelNotificationRequst(identifier: targetQuiz.id)
-            manager.scheduleQuizNotification(quiz: targetQuiz, quizIndex: quizIndex)
-
+            manager.scheduleQuizNotification(quiz: targetQuiz, quizIndex: targetIndex)
+ 
         }
         
     }
