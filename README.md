@@ -31,7 +31,18 @@ Date Trigger를 이용한 Local notification을 기반으로, Actionable Notific
 기업(쿠팡)에서 알림를 통해 퀴즈를 출제하고, 알림을 꾹 눌러 퀴즈를 풀 수 있습니다.. 이렇게 퀴즈를 맞추면 경품 추첨의 기회를 주며 앱에 진입하도록 하여 앱 사용률을 높히려 합니다..
 
 ## 🖼️ Prototype
-(프로토타입과 설명 추가)
+- 서버를 사용하지 않고 Use Case를 구현하기 위해, 하나의 앱 속에 출제자 모드와 참여자 모드 두가지로 접근할 수 있도록 하였다.
+
+- **출제자 모드** - 알림으로 뜨기를 원하는 문제와 선택지, 그리고 답을 설정하여 원하는 시간대에 알림이 가도록 관리할 수 있다.
+<img width="876" alt="Screenshot 2024-06-20 at 17 01 01" src="https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M29-Notification/assets/87518742/d13c071f-ef6d-4b36-8ffe-43bfbe2a1b00">
+
+</br>
+</br>
+
+- **참여자 모드** - 앱에서 접근하면 가장 최근 문제를 풀 수 있으며, 알림을 통해 문제를 풀면 바로 결과 화면으로 이동해 보상을 받거나 다른 문제를 풀어볼 수 있다.
+<img width="1063" alt="Screenshot 2024-06-20 at 17 01 17" src="https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M29-Notification/assets/87518742/97858c28-fc7a-4f10-b7e4-b1be60535f0b">
+
+
 
 ## 🛠️ About Code
 - 퀴즈 정보를 받아 알림을 추가하는 코드입니다. 알림에 관한 내용은 모두 NotificationManager 클래스를 만들어 관리하고 있습니다.
