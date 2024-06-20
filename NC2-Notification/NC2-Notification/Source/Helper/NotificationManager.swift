@@ -31,29 +31,25 @@ class NotificationManager: NSObject {
         }
     }
     
-    // UNTimeIntervalNotificationTrigger can be scheduled on the device to notify after the time interval, and optionally repeat.
-    func timeTrigger(timeInterval: TimeInterval, isRepeated: Bool) -> UNNotificationTrigger {
-        return UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: isRepeated)
-    }
-    
-    // UNLocationNotificationTrigger can be scheduled on the device to notify when the user enters or leaves a geographic region. The identifier on CLRegion must be unique. Scheduling multiple UNNotificationRequests with different regions containing the same identifier will result in undefined behavior. The number of UNLocationNotificationTriggers that may be scheduled by an application at any one time is limited by the system. Applications must have "when-in-use" authorization through CoreLocation. See the CoreLocation documentation for more information.
-    func locationTrigger(latitude: CLLocationDegrees, longitude: CLLocationDegrees, radius: CLLocationDistance, isRepeated: Bool, isEntry: Bool) -> UNNotificationTrigger {
-        let coordinate = CLLocationCoordinate2D(latitude: 40.0, longitude: 50.0)
-        let region = CLCircularRegion(center: coordinate, radius: 100, identifier: UUID().uuidString)
-        region.notifyOnExit = !isEntry
-        region.notifyOnEntry = isEntry
-        return UNLocationNotificationTrigger(region: region, repeats: isRepeated)
-    }
-    
-    // UNCalendarNotificationTrigger can be scheduled on the device to notify based on date and time values, and optionally repeat. For example, if a notification should be delivered at the next 8:00 AM then set the 'hour' property of dateComponents to 8. If the notification should be delivered every day at 8:00 AM then set repeats to YES.
-    func dateNotification(date: Date, isRepeated: Bool) -> UNNotificationTrigger {
+    func makeNotificationDateTrigger(date: Date, isRepeated: Bool) -> UNNotificationTrigger {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
         return UNCalendarNotificationTrigger(dateMatching: components, repeats: isRepeated)
     }
     
-    func scheduleQuizNotification(quiz: Quiz, quizIndex: Int) {
+    func makeNotificationContent(quiz: Quiz, quizIndex: Int) -> UNMutableNotificationContent {
+        badgeCount += 1
         
+        let content = UNMutableNotificationContent()
+        content.title = "알림을 꾸욱 눌러 문제를 풀어보세요."
+        content.body = "Q. \(quiz.problem)"
+        content.sound = .default
+        content.badge = (badgeCount) as NSNumber
+        content.userInfo = ["quizIndex": quizIndex]
+        return content
+    }
+    
+    func addActionButton(quiz: Quiz, categoryIdentifier: String) {
         var actions: [UNNotificationAction] = []
         for index in 0..<quiz.options.count {
             let option = quiz.options[index]
@@ -62,28 +58,25 @@ class NotificationManager: NSObject {
                                               options: .foreground)
             actions.append(action)
         }
-        let categoryIdentifier = "QUIZ_CATEGORY"
+        let categoryIdentifier = categoryIdentifier
         let quizAnswerCategory = UNNotificationCategory(identifier: categoryIdentifier,
                                                         actions: actions,
                                                         intentIdentifiers: [],
-                                                        options: .customDismissAction)
+                                                        options: .allowInCarPlay)
         
         UNUserNotificationCenter.current().setNotificationCategories([quizAnswerCategory])
+    }
+    
+    func scheduleQuizNotification(quiz: Quiz, quizIndex: Int) {
+        var content = makeNotificationContent(quiz: quiz, quizIndex: quizIndex)
         
-        badgeCount += 1
-        let content = UNMutableNotificationContent()
-        content.title = "알림을 꾸욱 눌러 문제를 풀어보세요."
-        // content.title = "오늘의 문제가 도착했어요!"
-        // content.subtitle = "알림을 꾸욱 눌러 문제를 풀어보세요."
-        content.body = "Q) \(quiz.problem)"
-        content.sound = .default
-        content.badge = (badgeCount) as NSNumber
+        let categoryIdentifier = "QUIZ_CATEGORY"
         content.categoryIdentifier = categoryIdentifier
-        content.userInfo = ["quizIndex": quizIndex]
+        addActionButton(quiz: quiz, categoryIdentifier: categoryIdentifier)
         
-        let trigger = dateNotification(date: quiz.date, isRepeated: false)
+        let trigger = makeNotificationDateTrigger(date: quiz.date, isRepeated: false)
+        
         let request = UNNotificationRequest(identifier: quiz.id, content: content, trigger: trigger)
-        
         UNUserNotificationCenter.current().add(request)
     }
     
