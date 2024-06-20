@@ -62,7 +62,10 @@ struct CustomerView: View {
         .background(.nc2Blue20)
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $showRewardSheet) {
-            Text("보상")
+            Image(.reward)
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
         }
     }
 }
